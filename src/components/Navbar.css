@@ -1,0 +1,25 @@
+/* src/components/Navbar.css */
+.navbar {
+  background-color: blue; /* Set navbar background color to blue */
+}
+
+.nav-list {
+  display: flex; /* Make the list items display in a row */
+  list-style-type: none; /* Remove default list styles */
+  padding: 0;
+}
+
+.nav-list li {
+  margin-right: 10px; /* Add some spacing between list items */
+}
+
+.nav-list li a {
+  text-decoration: none; /* Remove underline from links */
+  color: white; /* Set link text color to white */
+  padding: 8px 12px; /* Add padding to make links look like buttons */
+  border-radius: 5px; /* Add border radius to make links look like buttons */
+}
+
+.nav-list li a.active {
+  background-color: green; /* Set background color to green for active link */
+}
