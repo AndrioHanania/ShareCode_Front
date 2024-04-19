@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import CodeBlockList, { SimpleCodeBlock } from "../components/CodeBlockList";
 import axios from "axios";
+import { serverURL } from "../constans";
 
 const LobbyPage: React.FC = () => {
   const [codeBlocks, setCodeBlocks] = useState<SimpleCodeBlock[]>([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/code-blocks/")
+      .get(serverURL + "/api/code-blocks/")
       .then((response) => {
         setCodeBlocks(response.data);
       })

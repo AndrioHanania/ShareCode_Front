@@ -3,6 +3,7 @@ import { useParams, useNavigate, useLocation } from "react-router-dom";
 import CodeBlockDisplay from "../components/CodeBlockDisplay";
 import { CodeBlock } from "../components/CodeBlockList";
 import axios from "axios";
+import { serverURL } from "../constans";
 
 const CodeBlockPage: React.FC = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const CodeBlockPage: React.FC = () => {
   const fetchCodeBlock = (codeBlockId: string) => {
     if (codeBlockId != "0")
       axios
-        .get(`http://localhost:3000/api/code-blocks/${codeBlockId}`)
+        .get(serverURL + `/api/code-blocks/${codeBlockId}`)
         .then((response) => {
           setCodeBlock(response.data);
         })
@@ -32,7 +33,7 @@ const CodeBlockPage: React.FC = () => {
   const fetchCodeBlockIdBySessionId = async (sessionId: string) => {
     if (sessionId != "0") {
       const codeBlockId = await axios
-        .get(`http://localhost:3000/api/sessions/${sessionId}`)
+        .get(serverURL + `/api/sessions/${sessionId}`)
         .then((response) => {
           return response.data.codeBlockId;
         })

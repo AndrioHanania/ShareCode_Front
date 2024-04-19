@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CodeBlock } from "./CodeBlockList";
 import io, { Socket } from "socket.io-client";
+import { serverURL } from "../constans";
 
 interface Props {
   codeBlock?: CodeBlock;
@@ -41,7 +42,7 @@ const CodeBlockDisplay: React.FC<Props> = ({
     else return studentSocket();
   };
   const mentorSocket = () => {
-    const socket = io("http://localhost:3000/mentor-socket", {
+    const socket = io(serverURL + "/mentor-socket", {
       timeout: 10000, // Set a longer timeout
       transports: ["websocket", "polling"], // Explicitly set transports
       query: { codeBlockId: codeBlock?.id },
@@ -60,7 +61,7 @@ const CodeBlockDisplay: React.FC<Props> = ({
     return socket;
   };
   const studentSocket = () => {
-    const socket = io("http://localhost:3000/student-socket", {
+    const socket = io(serverURL + "/student-socket", {
       timeout: 10000, // Set a longer timeout
       transports: ["websocket", "polling"], // Explicitly set transports
       query: { sessionId },
